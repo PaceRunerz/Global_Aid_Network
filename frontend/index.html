@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Aid Network | Revolutionizing Donations Worldwide</title>
+    <title>Sampoorna | Revolutionizing Donations Worldwide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2E86AB;
+            --primary: #43A047; /* Changed from #2E86AB to #43A047 */
             --secondary: #A23B72;
             --accent: #F18F01;
             --light: #F7F9FC;
@@ -66,15 +66,33 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             font-weight: 700;
             font-size: 1.5rem;
             color: var(--primary);
             cursor: pointer;
+            text-decoration: none;
         }
 
-        .logo i {
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
             font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, #388E3C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -115,7 +133,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #1a6a8a;
+            background-color: #388E3C; /* Darker shade of green */
         }
 
         .btn-outline {
@@ -125,12 +143,14 @@
         }
 
         .btn-outline:hover {
-            background-color: rgba(46, 134, 171, 0.1);
+            background-color: rgba(67, 160, 71, 0.1); /* Updated to green */
         }
 
-        /* Hero Section */
+        /* Hero Section - Added background image */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #1a6a8a 100%);
+            background: 
+                linear-gradient(135deg, rgba(67, 160, 71, 0.9) 0%, rgba(56, 142, 60, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             color: white;
             padding: 5rem 0;
             text-align: center;
@@ -163,9 +183,10 @@
             background-color: #f0f0f0;
         }
 
-        /* Features Section */
+        /* Features Section - Added subtle background pattern */
         .section {
             padding: 5rem 0;
+            background-color: var(--light);
         }
 
         .section-title {
@@ -197,6 +218,8 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .feature-card:hover {
@@ -204,7 +227,7 @@
         }
 
         .feature-icon {
-            background-color: rgba(46, 134, 171, 0.1);
+            background-color: rgba(67, 160, 71, 0.1); /* Updated to green */
             width: 70px;
             height: 70px;
             border-radius: 50%;
@@ -224,17 +247,21 @@
             margin-bottom: 1rem;
         }
 
-        /* Live Counter */
+        /* Live Counter - Added background image */
         .counter-section {
-            background-color: var(--primary);
+            background: 
+                linear-gradient(135deg, rgba(67, 160, 71, 0.9) 0%, rgba(56, 142, 60, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             color: white;
-            padding: 3rem 0;
+            padding: 5rem 0;
             text-align: center;
         }
 
         .counter-container {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .counter-title {
@@ -246,6 +273,14 @@
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .counter-number {
+            display: inline-block;
         }
 
         .counter-subtitle {
@@ -261,16 +296,167 @@
 
         .stat {
             text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(5px);
+            min-width: 120px;
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .stat-label {
             font-size: 1rem;
             opacity: 0.9;
+        }
+
+        /* Animation for counting numbers */
+        @keyframes countUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .counting {
+            animation: countUp 0.8s ease-out forwards;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 5rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .testimonial-card:hover .testimonial-image img {
+            transform: scale(1.05);
+        }
+
+        .testimonial-content {
+            padding: 2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .author-role {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .testimonial-rating {
+            margin-top: 0.5rem;
+        }
+
+        .testimonial-rating i {
+            color: #FFC107;
+            font-size: 1rem;
+        }
+
+        /* Testimonial Navigation */
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .testimonial-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
         }
 
         /* Leaderboard */
@@ -355,7 +541,7 @@
             font-size: 0.9rem;
         }
 
-        /* Feed Section */
+        /* Feed Section - Added background pattern */
         .feed-container {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -499,10 +685,12 @@
             color: white;
         }
 
-        /* Emergency Section */
+        /* Emergency Section - Added background image */
         .emergency-section {
-            background-color: #fff8e1;
-            padding: 3rem 0;
+            background: 
+                linear-gradient(rgba(255, 248, 225, 0.9), rgba(255, 248, 225, 0.9)),
+                url('https://images.unsplash.com/photo-1516542076529-1ea3854896f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 5rem 0;
         }
 
         .emergency-container {
@@ -602,9 +790,11 @@
             color: var(--gray);
         }
 
-        /* Footer */
+        /* Footer - Added background pattern */
         footer {
-            background-color: var(--dark);
+            background: 
+                linear-gradient(rgba(43, 45, 66, 0.95), rgba(43, 45, 66, 0.95)),
+                url('https://images.unsplash.com/photo-1551133985-4c0ea34b8d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             color: white;
             padding: 4rem 0 2rem;
         }
@@ -656,6 +846,20 @@
             border-top: 1px solid #495057;
             color: #adb5bd;
             font-size: 0.9rem;
+        }
+
+        /* Logo fallback styles */
+        .logo-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, #388E3C 100%);
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         /* Modal Styles */
@@ -773,6 +977,10 @@
             .emergency-container {
                 flex-direction: column;
             }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -802,6 +1010,33 @@
             .verification-process::before {
                 display: none;
             }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                gap: 10px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-img {
+                height: 30px;
+            }
         }
     </style>
 </head>
@@ -810,10 +1045,10 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo" id="homeLink">
-                    <i class="fas fa-hands-helping"></i>
-                    <span>AID by Shreyansh Tripathi</span>
-                </div>
+                <a href="#" class="logo" id="homeLink">
+                    <img src="logo.png" alt="Sampoorna Logo" class="logo-img" id="logoImage">
+                    <span class="logo-text">Sampoorna</span>
+                </a>
                 <div class="nav-links">
                     <a id="homeNav">Home</a>
                     <a id="donateNav">Donate</a>
@@ -901,7 +1136,10 @@
         <div class="container">
             <div class="counter-container">
                 <h2 class="counter-title">Today's Food Donations</h2>
-                <div class="counter" id="foodCounter">0<span style="font-size: 2rem;">meals</span></div>
+                <div class="counter">
+                    <span class="counter-number" id="foodCounter">0</span>
+                    <span style="font-size: 2rem; margin-left: 0.5rem;">meals</span>
+                </div>
                 <p class="counter-subtitle">Updated in real-time from participating restaurants and donors</p>
                 <button class="btn btn-light" id="donateFoodBtn">Donate Food Now</button>
                 
@@ -975,6 +1213,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Testimonials Section -->
+    <section class="testimonials-section" id="testimonialsSection">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Testimonials</h2>
+                <p>Don't Believe Us? See What People Are Saying About Our Platform</p>
+            </div>
+            
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- Testimonials will be dynamically generated -->
+            </div>
+            
+            <div class="testimonial-nav" id="testimonialNav">
+                <!-- Navigation dots will be dynamically generated -->
             </div>
         </div>
     </section>
@@ -1118,7 +1374,7 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Global Aid Network</h3>
+                <h3>Sampoorna</h3>
                 <p style="color: #adb5bd; margin-bottom: 1.5rem;">
                     Connecting generosity with need through technology.
                 </p>
@@ -1183,7 +1439,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Global Aid Network. All rights reserved. 
+            <p>&copy; 2025 Sampoorna. All rights reserved. 
                 Made by Pace Runerz Alchemy | 
                 <a href="#" style="color: #adb5bd;">Privacy Policy</a> | 
                 <a href="#" style="color: #adb5bd;">Terms of Service</a>
@@ -1378,6 +1634,70 @@
         let currentUser = null;
         let authToken = null;
 
+        // Testimonials data
+        const testimonials = [
+            {
+                id: 1,
+                name: "Rahul Sharma",
+                role: "Food Donor",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                storyImage: "https://images.unsplash.com/photo-1559305289-2f4c2c6d346a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                text: "As a restaurant owner, I used to struggle with food waste. This platform helped me donate excess food efficiently. We now serve 100+ meals daily to those in need.",
+                rating: 5,
+                date: "2 months ago"
+            },
+            {
+                id: 2,
+                name: "Priya Patel",
+                role: "NGO Volunteer",
+                image: "https://images.unsplash.com/photo-1494790108755-2616b786d4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                storyImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                text: "The transparency and ease of use is remarkable. We can now track donations in real-time and ensure they reach the most vulnerable communities effectively.",
+                rating: 5,
+                date: "1 month ago"
+            },
+            {
+                id: 3,
+                name: "Amit Kumar",
+                role: "Beneficiary",
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                storyImage: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                text: "During the flood crisis, this platform connected us with immediate help. The emergency response team provided food and shelter within hours. Lifesaver!",
+                rating: 5,
+                date: "3 weeks ago"
+            },
+            {
+                id: 4,
+                name: "Sneha Verma",
+                role: "Corporate Donor",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                storyImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                text: "Our company's CSR initiatives found the perfect partner. The platform's verification process ensures our donations are used exactly as intended.",
+                rating: 4,
+                date: "2 weeks ago"
+            },
+            {
+                id: 5,
+                name: "Rajesh Singh",
+                role: "Community Leader",
+                image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                storyImage: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                text: "The location-based feature helped us identify and support over 50 families in our locality. The impact tracking motivates more people to contribute.",
+                rating: 5,
+                date: "1 week ago"
+            },
+            {
+                id: 6,
+                name: "Meera Desai",
+                role: "Individual Donor",
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                storyImage: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                text: "I love how I can see exactly where my donations go. The success stories and photos from beneficiaries make donating feel personal and meaningful.",
+                rating: 5,
+                date: "4 days ago"
+            }
+        ];
+
         // API Service
         const apiService = {
             async request(endpoint, options = {}) {
@@ -1482,7 +1802,29 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeApp();
             setupEventListeners();
+            loadTestimonials();
+            setupLogoFallback();
         });
+
+        // NEW FUNCTION: Setup logo fallback
+        function setupLogoFallback() {
+            const logoImage = document.getElementById('logoImage');
+            
+            // Check if logo loads successfully
+            logoImage.onerror = function() {
+                console.log('Logo not found, using fallback');
+                logoImage.style.display = 'none';
+                
+                // Create fallback logo
+                const fallbackDiv = document.createElement('div');
+                fallbackDiv.className = 'logo-fallback';
+                fallbackDiv.innerHTML = 'S';
+                
+                // Insert fallback before the logo text
+                const logoLink = document.getElementById('homeLink');
+                logoLink.insertBefore(fallbackDiv, logoLink.firstChild);
+            };
+        }
 
         async function initializeApp() {
             try {
@@ -1555,11 +1897,109 @@
             loadEvents();
         }
 
+        // NEW FUNCTION: Load testimonials
+        function loadTestimonials() {
+            const testimonialsGrid = document.getElementById('testimonialsGrid');
+            const testimonialNav = document.getElementById('testimonialNav');
+            
+            testimonialsGrid.innerHTML = '';
+            testimonialNav.innerHTML = '';
+            
+            testimonials.forEach((testimonial, index) => {
+                // Create testimonial card
+                const testimonialCard = document.createElement('div');
+                testimonialCard.className = 'testimonial-card';
+                testimonialCard.innerHTML = `
+                    <div class="testimonial-image">
+                        <img src="${testimonial.storyImage}" alt="${testimonial.name}'s story" loading="lazy">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">${testimonial.text}</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <img src="${testimonial.image}" alt="${testimonial.name}" loading="lazy">
+                            </div>
+                            <div class="author-info">
+                                <h4>${testimonial.name}</h4>
+                                <div class="author-role">${testimonial.role} • ${testimonial.date}</div>
+                                <div class="testimonial-rating">
+                                    ${'<i class="fas fa-star"></i>'.repeat(testimonial.rating)}
+                                    ${'<i class="far fa-star"></i>'.repeat(5 - testimonial.rating)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                testimonialsGrid.appendChild(testimonialCard);
+                
+                // Create navigation dot
+                const dot = document.createElement('div');
+                dot.className = `testimonial-dot ${index === 0 ? 'active' : ''}`;
+                dot.dataset.index = index;
+                dot.addEventListener('click', () => {
+                    // Scroll to testimonial
+                    testimonialCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Update active dot
+                    document.querySelectorAll('.testimonial-dot').forEach(d => d.classList.remove('active'));
+                    dot.classList.add('active');
+                });
+                
+                testimonialNav.appendChild(dot);
+            });
+        }
+
+        // NEW FUNCTION: Animate counting from 0 to target number
+        function animateCount(element, targetValue, duration = 2000) {
+            const elementId = element.id;
+            let currentValue = 0;
+            const increment = targetValue / (duration / 16);
+            const elementDom = document.getElementById(elementId);
+            
+            // Add animation class
+            elementDom.classList.add('counting');
+            
+            function updateCounter() {
+                currentValue += increment;
+                if (currentValue < targetValue) {
+                    elementDom.textContent = Math.floor(currentValue);
+                    setTimeout(updateCounter, 16);
+                } else {
+                    elementDom.textContent = targetValue;
+                    // Remove animation class after completion
+                    setTimeout(() => {
+                        elementDom.classList.remove('counting');
+                    }, 300);
+                }
+            }
+            
+            // Start animation after a small delay for better visual effect
+            setTimeout(updateCounter, 300);
+        }
+
+        // MODIFIED FUNCTION: Update donation counter with animation
+        function updateDonationCounter(stats) {
+            // Main food counter animation
+            animateCount({id: 'foodCounter'}, stats.today, 2000);
+            
+            // Restaurant count animation with delay
+            setTimeout(() => {
+                animateCount({id: 'restaurantCount'}, stats.restaurants, 1500);
+            }, 500);
+            
+            // Organization count animation with delay
+            setTimeout(() => {
+                animateCount({id: 'organizationCount'}, stats.organizations, 1500);
+            }, 1000);
+            
+            // City count animation with delay
+            setTimeout(() => {
+                animateCount({id: 'cityCount'}, stats.cities, 1500);
+            }, 1500);
+        }
+
         function setupEventListeners() {
-
-
-
-
             // Navigation
             document.getElementById('homeLink').addEventListener('click', () => scrollToSection('homeSection'));
             document.getElementById('homeNav').addEventListener('click', () => scrollToSection('homeSection'));
@@ -1647,11 +2087,6 @@
                     closeModals();
                 }
             });
-
-
-
-
-
 
             // Auth forms - CONNECTED TO BACKEND
             document.getElementById('loginForm').addEventListener('submit', async (e) => {
@@ -1763,30 +2198,7 @@
             }
         }
 
-        function updateDonationCounter(stats) {
-            animateCounter('foodCounter', stats.today, 2000);
-            animateCounter('restaurantCount', stats.restaurants, 2000);
-            animateCounter('organizationCount', stats.organizations, 2000);
-            animateCounter('cityCount', stats.cities, 2000);
-        }
-
-        function animateCounter(elementId, targetValue, duration) {
-            const element = document.getElementById(elementId);
-            let currentValue = 0;
-            const increment = targetValue / (duration / 16);
-            
-            function updateCounter() {
-                currentValue += increment;
-                if (currentValue < targetValue) {
-                    element.textContent = Math.floor(currentValue);
-                    setTimeout(updateCounter, 16);
-                } else {
-                    element.textContent = targetValue;
-                }
-            }
-            
-            setTimeout(updateCounter, 500);
-        }
+        // REMOVED OLD animateCounter FUNCTION
 
         async function switchLeaderboardTab(category) {
             // Update active tab
@@ -1952,6 +2364,9 @@
                 case 'emergency':
                     scrollToSection('emergencySection');
                     break;
+                case 'testimonials':
+                    scrollToSection('testimonialsSection');
+                    break;
             }
         }
 
@@ -1982,6 +2397,7 @@
                 modal.style.display = 'none';
             });
         }
+        
         function showToast(message, type = 'success') {
             toast.textContent = message;
             toast.className = 'toast';
